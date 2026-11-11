@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Нервная система — викторина по биологии</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <button id="home" class="brand" type="button" aria-label="На стартовую страницу">
+      <h1>Нервная система</h1>
+      <p>Биология · 9 класс</p>
+    </button>
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-view="quiz" role="tab">Тест</button>
+      <button class="tab" data-view="match" role="tab">Соедини линиями</button>
+    </nav>
+    <button id="fs" class="icon-btn" type="button" aria-label="На весь экран" title="На весь экран">⛶</button>
+  </header>
+
+  <main>
+    <!-- ================= ТЕСТ ================= -->
+    <section id="view-quiz" class="view">
+      <div id="quiz-start" class="panel start">
+        <h2>Выбери тему</h2>
+        <div id="quiz-topics" class="tiles"></div>
+        <div class="row center">
+          <button id="quiz-start-10" class="btn primary big" type="button">10 случайных вопросов</button>
+          <button id="quiz-start-all" class="btn big" type="button">Все вопросы темы</button>
+        </div>
+      </div>
+
+      <div id="quiz-play" class="panel play" hidden>
+        <div class="qhead">
+          <div class="progress"><div id="quiz-bar"></div></div>
+          <span id="quiz-count" class="count"></span>
+        </div>
+        <h2 id="quiz-q" class="question"></h2>
+        <div id="quiz-options" class="options"></div>
+        <div id="quiz-foot" class="qfoot" hidden>
+          <div id="quiz-feedback" class="feedback"></div>
+          <button id="quiz-next" class="btn primary big" type="button">Дальше →</button>
+        </div>
+      </div>
+
+      <div id="quiz-end" class="panel result" hidden>
+        <div class="result-head">
+          <div id="quiz-ring" class="ring"><span id="quiz-pct"></span></div>
+          <div class="result-text">
+            <h2 id="quiz-title"></h2>
+            <p id="quiz-result"></p>
+            <div class="row">
+              <button id="quiz-again" class="btn primary big" type="button">Ещё раз</button>
+              <button id="quiz-menu" class="btn big" type="button">В меню</button>
+            </div>
+          </div>
+        </div>
+        <div id="quiz-wrong" class="wrong-wrap"></div>
+      </div>
+    </section>
+
+    <!-- ================= ЛИНИИ ================= -->
+    <section id="view-match" class="view" hidden>
+      <div id="match-menu" class="panel start">
+        <h2>Выбери тему</h2>
+        <div id="match-topics" class="tiles"></div>
+      </div>
+
+      <div id="match-play" class="panel play" hidden>
+        <div class="bar">
+          <button id="match-back" class="btn ghost" type="button">← Темы</button>
+          <h2 id="match-title"></h2>
+          <p id="match-msg" class="msg" aria-live="polite"></p>
+          <button id="match-reset" class="btn" type="button">Сбросить</button>
+          <button id="match-check" class="btn primary" type="button">Проверить</button>
+          <button id="match-next" class="btn primary" type="button" hidden>Дальше →</button>
+        </div>
+        <div id="board" class="board">
+          <svg id="lines" aria-hidden="true"></svg>
+          <div id="col-left" class="col"></div>
+          <div id="col-right" class="col"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
