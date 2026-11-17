@@ -3,3 +3,7 @@
 *.jpg
 *.jpeg
 *.pdf
+
+# картинки сайта (Wikimedia Commons) публикуем
+!img/
+!img/*

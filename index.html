@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header class="top">
     <button id="home" class="brand" type="button" aria-label="На стартовую страницу">
       <h1>Нервная система</h1>
@@ -36,8 +37,16 @@
           <div class="progress"><div id="quiz-bar"></div></div>
           <span id="quiz-count" class="count"></span>
         </div>
-        <h2 id="quiz-q" class="question"></h2>
-        <div id="quiz-options" class="options"></div>
+        <div class="qbody">
+          <figure id="quiz-fig" class="qfig" hidden>
+            <div id="quiz-img" class="qimg"></div>
+            <figcaption id="quiz-cap"></figcaption>
+          </figure>
+          <div class="qmain">
+            <h2 id="quiz-q" class="question"></h2>
+            <div id="quiz-options" class="options"></div>
+          </div>
+        </div>
         <div id="quiz-foot" class="qfoot" hidden>
           <div id="quiz-feedback" class="feedback"></div>
           <button id="quiz-next" class="btn primary big" type="button">Дальше →</button>
@@ -88,6 +97,7 @@
   <div id="toast" class="toast" role="status" hidden></div>
 
   <script src="questions.js"></script>
+  <script src="images.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

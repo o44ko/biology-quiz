@@ -93,6 +93,17 @@
     $('#quiz-q').textContent = q.q;
     $('#quiz-foot').hidden = true;
 
+    const img = window.imageFor ? window.imageFor(q) : null;
+    $('#quiz-fig').hidden = !img;
+    if (img) {
+      $('#quiz-img').innerHTML = '';
+      const im = new Image(); im.src = img.src; im.alt = img.title;
+      $('#quiz-img').appendChild(im);
+      $('#quiz-cap').textContent = img.title;
+    }
+    const qp = $('#quiz-play');
+    qp.classList.remove('enter'); void qp.offsetWidth; qp.classList.add('enter');
+
     const box = $('#quiz-options');
     box.textContent = '';
     shuffle([{ t: q.correct, ok: true }, ...q.wrong.map((t) => ({ t, ok: false }))]).forEach((o, i) => {
@@ -472,6 +483,7 @@
     homeTimer = setTimeout(() => { homeTaps = 0; }, 1500);
     goHome();
   });
+
 
   renderQuizTopics();
   renderMatchTopics();

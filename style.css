@@ -320,3 +320,51 @@ main {
   .pcard.right { padding-left: 1.2rem; }
   .board { column-gap: 3rem; }
 }
+
+/* ---------- эффекты ---------- */
+.tile, .opt { transition: transform .15s, border-color .2s, background .2s, box-shadow .2s, opacity .2s; }
+@media (hover: hover) {
+  .tile:hover, .opt:hover:not(:disabled) { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 .5rem 1.4rem rgba(109, 74, 255, .2); }
+}
+.btn.primary { position: relative; overflow: hidden; }
+.btn.primary::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.4) 50%, transparent 70%);
+  transform: translateX(-100%); animation: shine 3.5s infinite; pointer-events: none;
+}
+@keyframes shine { 60%, 100% { transform: translateX(100%); } }
+
+/* вопрос с картинкой */
+.qbody { flex: 1; min-height: 0; display: flex; gap: 1.6rem; }
+.qmain { flex: 1; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 1.1rem; }
+.qfig {
+  flex: 0 0 36%; margin: 0; min-height: 0;
+  display: flex; flex-direction: column; gap: .5rem;
+  padding: .8rem; border-radius: 1.4rem;
+  background: #fff; border: .15rem solid var(--line);
+}
+.qimg { flex: 1; min-height: 0; display: grid; place-items: center; }
+.qimg img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: .8rem; }
+.qfig figcaption { text-align: center; font-weight: 700; font-size: .95rem; color: var(--muted); }
+.play.enter .qfig { animation: rise .5s both; }
+.play.enter .question { animation: rise .45s both .05s; }
+.play.enter .opt { animation: rise .45s both; }
+.play.enter .opt:nth-child(2) { animation-delay: .07s; }
+.play.enter .opt:nth-child(3) { animation-delay: .14s; }
+.play.enter .opt:nth-child(4) { animation-delay: .21s; }
+@keyframes rise { from { opacity: 0; transform: translateY(1rem); } }
+
+@media (max-width: 900px) {
+  .qbody { flex: none; flex-direction: column; gap: .8rem; }
+  .qfig { flex: none; height: 12rem; padding: .5rem; }
+  .qfig figcaption { display: none; }
+  .panel { overflow-y: auto; }
+  .question { font-size: 1.4rem !important; }
+  .options { flex: none; grid-auto-rows: auto; }
+  .opt { font-size: 1.1rem; padding: .7rem 1rem; }
+  .opt .badge { width: 2.4rem; height: 2.4rem; font-size: 1.1rem; }
+  .qfoot { flex-direction: column; align-items: stretch; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
